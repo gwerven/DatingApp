@@ -1,5 +1,5 @@
 # DatingApp
-Online dating service created for Out in Tech U spring 2020
+Online dating service web app created for Out in Tech U spring 2020
 
 This project is to get experience:
 -Building a web API (ASP.NET Core, C#)
