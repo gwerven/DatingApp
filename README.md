@@ -14,3 +14,5 @@ This project is to get experience:
 -Using source control (Git)
 -Deploying to a cloud platform (Azure)
 -Working with Windows PowerShell, Visual Studio Code, npm, node.js
+
+Small edit by aray.
