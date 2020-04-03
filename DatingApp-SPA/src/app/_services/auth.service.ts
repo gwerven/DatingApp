@@ -22,4 +22,10 @@ login(model: any) {
       })
     );
 }
+
+// Model is just an object used to store username and password
+register(model: any) {
+  // Post method returns an observable
+  return this.http.post(this.baseUrl + 'register', model);
+}
 }
