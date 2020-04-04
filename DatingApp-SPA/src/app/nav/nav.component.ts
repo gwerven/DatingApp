@@ -27,11 +27,9 @@ export class NavComponent implements OnInit {
     });
   }
 
-  // We want to do some things, like show the user a welcome message, only if they are logged in
+  // Return true if user is logged in, false otherwise
   loggedIn() {
-    const token = localStorage.getItem('token');
-    // If there's something in this token, it will return true, if token is empty, return false
-    return !!token;
+    return this.authService.loggedIn();
   }
 
   logout() {
