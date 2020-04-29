@@ -41,6 +41,8 @@ namespace DatingApp.API
             // Service instance created once per HTTP request within scope
             // We inject IAuth to controllers and it gets implementationfrom Auth
             services.AddScoped<IAuthRepository, AuthRepository>();
+            // Add repository for making changes to the db
+            services.AddScoped<IDatingRepository, DatingRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options => {
                     options.TokenValidationParameters = new TokenValidationParameters
