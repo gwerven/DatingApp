@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using DatingApp.API.Data;
 using DatingApp.API.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -34,10 +35,18 @@ namespace DatingApp.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Ordering in this method is not important
             // Establish connection with db
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddControllers();
+            // The default JSON support is not good, so use NewtonsoftJson
+            services.AddControllers().AddNewtonsoftJson(opt =>
+            {
+                opt.SerializerSettings.ReferenceLoopHandling =
+                Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
             services.AddCors();
+            // Add AutoMapper to our services for mapping DTOs and controllers
+            services.AddAutoMapper(typeof(DatingRepository).Assembly);
             // Service instance created once per HTTP request within scope
             // We inject IAuth to controllers and it gets implementationfrom Auth
             services.AddScoped<IAuthRepository, AuthRepository>();
