@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // Set the api URL in environment class so that we only have to change it in one place for deployment
+  // Reference it in services as environment.apiUrl
+  apiUrl: 'http://localhost:5000/api/'
 };
 
 /*
